@@ -1,0 +1,39 @@
+<!-- ask.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ask Question</h1>
+        <form action="/ask" method="post">
+            <div class="form-group">
+                <label for="question">Enter your question:</label>
+                <input type="text" name="question" id="question" class="inputfield" value="{{ question if question else '' }}">
+                <!-- <div id="loading" style="display: none;">Loading...</div> -->
+            </div>
+            <div id="output" style="width: 100%; height: 200px; overflow: auto; border: 1px solid #ccc; padding: 10px;">
+                {% if output_text %}
+                    <div>{{ output_text }}</div>
+                {% else %}
+                    Loading...
+                {% endif %}
+            </div>
+            <button type="submit" class="proceed-btn" id="proceed-btn">Proceed</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Show loading widget when form is submitted
+            document.getElementById('proceed-btn').addEventListener('click', function() {
+                document.getElementById('loading').style.display = 'block';
+                // document.getElementById('output').innerHTML = 'Loading...'; // Show loading text
+            });
+        });
+    </script>
+</body>
+</html>
