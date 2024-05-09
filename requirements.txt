@@ -2,6 +2,6 @@ langchain
 huggingface_hub
 pypdf
 python_dotenv
-sentence_transformer
+sentence_transformers
 docarray
 flask
